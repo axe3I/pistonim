@@ -1,0 +1,148 @@
+<ion-view title="{{labels.modifier}}" id="page16" cache-view="false">
+    <ion-content overflow-scroll="true" padding="true"  class="has-header">
+        
+  
+    
+ <form class="list" name="addArtisan" ng-submit="hideKeyboard();" novalidate ng-submit="submitArtisan();">
+
+     <div class=list>
+     <label class="item item-input" ng-class="{'has-error': addArtisan.telephone.$invalid && addArtisan.telephone.$dirty}">
+         
+                <input type="tel" name="telephone" id="telephone" placeholder="{{labels.telephone}} *" ng-model="artisanUpdate.telephone" pattern="[0-9+]{8,15}" required ng-change="telephone_change(addArtisan.telephone.$valid);" value="addArtisan.$invalid">
+            </label>
+   
+      <label class="item item-input" ng-class="{'has-error': addArtisan.email.$invalid && addArtisan.email.$dirty}">
+                <input type="email" name="email" id="email" placeholder="{{labels.email}}" ng-model="artisanUpdate.email" ng-disabled="addArtisan.telephone.$invalid" >
+            </label>
+ 
+<!--    <div class="item item-inset">-->
+     
+    <label class="item item-input item-select" ng-class="{'has-error': addArtisan.activite.$invalid && addArtisan.activite.$dirty}">
+         <div class = "input-label" ng-disabled="addArtisan.telephone.$invalid">
+      {{labels.activite}} : 
+         </div>
+         <select ng-if="!text_activite" id="activite_id" name="activite_id" ng-model="artisanUpdate.activite_id" convert-to-number  ng-change="activite_change();"  ng-disabled="addArtisan.telephone.$invalid" required>
+                    <option ng-repeat="activite in activites" value="{{activite.id}}">{{activite.title}}</option>
+                </select> 
+           
+        
+</label>        
+ <!--       
+         <input type="text" ng-if="text_activite" placeholder="{{labels.activite}}" maxlength="100" class="form-control" ng-model="artisanUpdate.activite" name="activite" id="activite" ng-disabled="addArtisan.telephone.$invalid">
+            
+                    
+         <button type="button" class="icon ion-plus-circled" ng-click="add_activite();" ng-disabled="addArtisan.telephone.$invalid"></button>
+                  
+     </div>  
+      -->  
+    <label class="item item-input item-select" ng-class="{'has-error': addArtisan.specialite.$invalid && addArtisan.specialite.$dirty}" ng-hide="addArtisan.telephone.$invalid">
+         <div class = "input-label" ng-disabled="addArtisan.telephone.$invalid">
+      {{labels.specialite}} : 
+         </div>
+         <select ng-if="!text_specialite" id="specialite_id" name="specialite_id" ng-model="artisanUpdate.specialite_id" convert-to-number required>
+                    <option ng-repeat="specialite in specialites" value="{{specialite.id}}">{{specialite.title}}</option>
+                </select> 
+           
+       
+</label> 
+     
+
+     <label class="item item-input item-select" convert-to-number ng-disabled="addArtisan.telephone.$invalid">
+             <div class = "input-label" ng-disabled="addArtisan.telephone.$invalid">
+      {{labels.relation}} : 
+   </div>
+                <select id="ralation_id" name="relation_id" ng-model="artisanUpdate.relation_id"  required ng-disabled="addArtisan.telephone.$invalid">
+                    <option ng-repeat="relation in relations" value="{{relation.id}}">{{relation.title}}</option>
+                </select>
+                </label>
+     
+      <label ng-show="artisanUpdate.relation_id == 3" class="item item-input" ng-class="{'has-error': addArtisan.societe.$invalid && addArtisan.societe.$dirty}">
+           
+            
+                <input type="text" placeholder="{{labels.societe}} *" maxlength="100" class="form-control" ng-model="artisanUpdate.societe" name="societe" id="societe" ng-required="artisanUpdate.relation_id == 3" ng-disabled="addArtisan.telephone.$invalid">
+           
+        </label>
+     
+         <label ng-show="artisanUpdate.relation_id == 3" class="item item-input" ng-class="{'has-error': addArtisan.numero_tva.$invalid && addArtisan.numero_tva.$dirty}">
+            
+            
+                <input type="text" placeholder="{{labels.numero_tva}} *" minlength="10" maxlength="14" class="form-control" ng-model="artisanUpdate.numero_tva" name="numero_tva" id="numero_tva" ng-disabled="addArtisan.telephone.$invalid">
+     </label>
+     
+     <label class="item item-input" ng-class="{'has-error': addArtisan.nom.$invalid && addArtisan.nom.$dirty}">
+                <input type="text" name="nom" id="nom" placeholder="{{labels.nom}} *" maxlength="100" ng-model="artisanUpdate.nom" required ng-disabled="addArtisan.telephone.$invalid">
+            </label>
+     
+ <label class="item item-input" ng-class="{'has-error': addArtisan.prenom.$invalid && addArtisan.prenom.$dirty}">
+                <input type="text" name="prenom" id="prenom" placeholder="{{labels.prenom}} *" maxlength="100" ng-model="artisanUpdate.prenom" required ng-disabled="addArtisan.telephone.$invalid">
+            </label>
+     
+         
+     
+        
+      
+    <label class="item item-input" ng-class="{'has-error': addArtisan.resume_specialite.$invalid && addArtisan.resume_specialite.$dirty}">
+        <textarea type="text" name="resume_specialite" id="resume_specialite" placeholder="{{labels.resume_specialite}}" maxlength="100" ng-model="artisanUpdate.resume_specialite" ng-disabled="addArtisan.telephone.$invalid"></textarea>
+            </label>
+         
+
+           <label class="item item-input item-select" class="form-control" convert-to-number ng-disabled="addArtisan.telephone.$invalid" >
+                <div class = "input-label" ng-disabled="addArtisan.telephone.$invalid">
+      {{labels.pays}} : 
+   </div>
+               <select id="countrie_id" name="countrie_id" ng-model="artisanUpdate.countrie_id" ng-change="pays_change();" class="form-control" convert-to-number ng-disabled="addArtisan.telephone.$invalid" required>
+                    <option ng-repeat="countrie in countries" value="{{countrie.id}}">{{countrie.name_fr}}</option>
+                </select>
+     </label>
+     
+      <!-- <label class="item item-input" ng-class="{'has-error': addArtisan.province.$invalid && addArtisan.province.$dirty}">-->
+               <input type="text" ng-model="artisanUpdate.province_id"  name="province_id" id="province_id" ng-show="false" required>
+         <!--   </label>-->
+  
+<label class="item item-input" ng-class="{'has-error': artisanUpdate.localite_id.$invalid && artisanUpdate.localite_id.$dirty}" ng-hide="artisanUpdate.telephone.$invalid">
+                <input cancel-label="X" ng-disabled="artisanUpdate.telephone.$invalid" select-items-label="Sélectionner un élément" selected-items-label="Choisi :" ion-autocomplete placeholder="{{labels.code_postal}} *" item-value-key="id" item-view-value-key="title" max-selected-items="1" type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off" ng-model="artisanUpdate.localite.title" items-method="callbackMethod(query)" items-clicked-method="clickedMethod(callback)" model-to-item-method="modelToItemMethod(modelValue)"/>
+               
+            </label>
+  
+     <!--    <label class="item item-input" ng-class="{'has-error': addArtisan.localite_id.$invalid && addArtisan.localite_id.$dirty}">-->
+     <input type="text" ng-model="artisanUpdate.localite_id"  name="localite_id" id="localite_id" ng-show="false" required ng-disabled="addArtisan.telephone.$invalid">
+    <!--   </label>-->
+ <label class="item item-input" ng-class="{'has-error': addArtisan.adresse.$invalid && addArtisan.adresse.$dirty}">
+     <textArea name="adresse" id="adresse" placeholder="{{labels.adresse}}" maxlength="100" ng-model="artisanUpdate.adresse" ng-disabled="addArtisan.telephone.$invalid"></textArea>
+            </label>
+
+       <label class="item item-input" ng-class="{'has-error': addArtisan.telephone_fix.$invalid && addArtisan.telephone_fix.$dirty}">
+                <input type="tel" name="telephone_fix" id="telephone_fix" placeholder="{{labels.telephone}}" ng-model="artisanUpdate.telephone_fix"  ng-disabled="addArtisan.telephone.$invalid">
+            </label>
+     
+     
+     
+     
+     
+            
+   
+
+             <label class="item range">{{labels.tarif}} :
+   <input type="range" name="tarif" id="tarif" ng-model="artisanUpdate.ratingtarif" max=10 min=0 value="0" ng-disabled="addArtisan.telephone.$invalid">{{artisanUpdate.ratingtarif}}</label>
+            <label class="item range">{{labels.planning}} :
+   <input type="range" name="planning" id="planning" ng-model="artisanUpdate.ratingplanning" max=10 min=0 value="0" ng-disabled="addArtisan.telephone.$invalid">{{artisanUpdate.ratingplanning}}</label>
+            <label class="item range">{{labels.qualite}} :
+   <input type="range" name="qualite" id="qualite" ng-model="artisanUpdate.ratingqualite" max=10 min=0 value="0" ng-disabled="addArtisan.telephone.$invalid">{{artisanUpdate.ratingqualite}}</label>
+
+       <button type="submit" ng-show="false">submit</button>
+      <button type="submit" id="sInscrire-button3"    class="button button-energized  button-block icon-left ion-plus-circled"  ng-click="submitArtisan();" ng-disabled="addArtisan.$invalid">{{labels.enregistrer}}</button>
+    
+     
+    
+     
+     </div>
+       </form> 
+     
+     
+  
+        
+        
+        
+    </ion-content>
+	
+</ion-view>

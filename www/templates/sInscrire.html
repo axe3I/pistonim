@@ -1,0 +1,45 @@
+<ion-view title="{{labels.inscription}}" id="page4">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list" name="frmSignUp" ng-submit="hideKeyboard();" novalidate ng-show="!validateSignup">
+            <label class="item item-input" ng-class="{'has-error': frmSignUp.nom.$invalid && frmSignUp.nom.$dirty}">
+                <input type="text" name="nom" id="nom" placeholder="{{labels.nom}} *" maxlength="100" ng-model="userSu.nom" required>
+            </label>
+            <label class="item item-input" ng-class="{'has-error': frmSignUp.prenom.$invalid && frmSignUp.prenom.$dirty}">
+                <input type="text" name="prenom" id="prenom" placeholder="{{labels.prenom}} *" maxlength="100" ng-model="userSu.prenom" required>
+            </label>
+            <label class="item item-input" ng-class="{'has-error': frmSignUp.email.$invalid && frmSignUp.email.$dirty}">
+                <input type="email" name="email" id="email" placeholder="{{labels.email}} *" ng-model="userSu.email" required>
+            </label>
+            <label class="item item-select" ng-class="{'has-error': frmSignUp.countrie_id.$invalid && frmSignUp.countrie_id.$dirty}">
+                <span class="input-label">{{labels.pays}} *</span>
+                <select id="countrie_id" name="countrie_id" ng-model="userSu.countrie_id" ng-change="pays_change();" class="form-control" convert-to-number required>
+                    <option ng-repeat="countrie in countries" value="{{countrie.id}}">{{countrie.name_fr}}</option>
+                </select>
+            </label>
+            <label class="item item-input" ng-class="{'has-error': frmSignUp.localite_id.$invalid && frmSignUp.localite_id.$dirty}">
+                <input cancel-label="X" select-items-label="Sélectionner un élément" selected-items-label="Choisi :" ion-autocomplete placeholder="{{labels.code_postal}} *" item-value-key="id" item-view-value-key="title" max-selected-items="1" type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off" ng-model="userSu.localite_id" items-method="callbackMethod(query)" items-clicked-method="clickedMethod(callback)" required/>
+                <!--select id="countrie_id" name="localite_id" ng-model="userSu.localite" convert-to-number required>
+                    <option ng-repeat="localite in localites" value="{{localite}}">{{localite.code}} {{localite.title}}</option>
+                </select-->
+            </label>
+            <label class="item item-input" name="adresse">
+                <input type="text" placeholder="{{labels.adresse}}" ng-model="userSu.adresse" name="adresse" id="adresse">
+            </label>
+            <label class="item item-input" ng-class="{'has-error': frmSignUp.password.$invalid && frmSignUp.password.$dirty}">
+                <input type="password" placeholder="{{labels.password}} *" pattern=".{6,}" class="form-control" ng-model="userSu.password" name="password" required>
+            </label>
+            <label class="item item-input" ng-class="{'has-error': frmSignUp.onfirmpassword.$invalid && frmSignUp.onfirmpassword.$dirty}">
+                <input type="password" placeholder="{{labels.confirm}} *" pattern=".{6,}" class="form-control" ng-model="userSu.confirmPassword" equals-to="userSu.password" name="onfirmpassword" id="onfirmpassword" required>
+            </label>
+            <button type="submit" ng-show="false">submit</button>
+            <button type="button" id="sInscrire-button3" ng-click="register();" ng-disabled="frmSignUp.$invalid" class="button button-energized  button-block icon-left ion-log-in">{{labels.inscription}}</button>
+        </form>
+        <form class="list" name="frmValidate" ng-submit="hideKeyboard();" novalidate ng-show="validateSignup">
+            <label class="item item-input" ng-class="{'has-error': frmValidate.code.$invalid && frmValidate.code.$dirty}">
+                <input type="text" placeholder="{{labels.code_activation}} *" minlength="6" maxlength="6" class="form-control" ng-model="userSu.code" name="code" id="code" required>
+            </label>
+            <button type="submit" ng-show="false">submit</button>
+            <button type="button" id="sInscrire-button3" ng-click="validateCode();" ng-disabled="frmValidate.$invalid" class="button button-energized  button-block icon-left ion-email">{{labels.envoyer}}</button>
+        </form>
+    </ion-content>
+</ion-view>

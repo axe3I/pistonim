@@ -1,0 +1,19 @@
+<ion-view title="{{labels.demandes_amis}}({{demandesAmis_count}})" cache-view="false" id="page2">
+
+    <ion-content>
+  
+                                    <ion-list ng-repeat="user in liste_demandes">
+                                       <div class="item item-input-inset no-padding"> 
+                                            <button class="button button-full no-padding" ng-click="afficherAmi(user);">{{user.user.title}} ({{user.user.artisan_count}} {{labels.artisans}})</button>
+                                            
+                                                   
+                     <button class="button button-icon button-clear ion-plus-circled no-padding" ng-click="ajouter(user);"></button>
+                        <button class="button button-icon button-clear ion-trash-a no-padding" ng-click="supprimer(user);"></button>
+                                        </div>
+    </ion-list>
+                                <div class="card" ng-show="liste_demandes.length ===0">
+                                    <div class="item item-text-wrap">{{labels.aucun_utilisateur}}</div>
+                                </div>  
+        
+    </ion-content>
+</ion-view>

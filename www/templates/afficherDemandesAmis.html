@@ -1,0 +1,48 @@
+<ion-view title="{{labels.demandes_amis}}" cache-view="false" id="page16">
+    
+<ion-nav-buttons side="right" ng-hide="auth" cash-view="false">
+                         <button class="button button-icon button-clear ion-plus-circled no-padding" ng-click="ajouter();"></button>
+                        <button class="button button-icon button-clear ion-trash-a" ng-hide="del" ng-click="supprimer();"></button>
+                    
+                    </ion-nav-buttons>
+
+<ion-content padding="true" class="has-header">
+
+    <div class="card" ng-show="amiShow.user.length ===0">
+                                    <div class="item item-text-wrap">{{labels.aucun_utilisateur}}</div>
+                                </div>  
+    
+<div class="list card" ng-show="amiShow.user.length !==0">     
+   
+    <a href="mailto:{{amiShow.user.email}}" class="item item-icon-left" ng-show="amiShow.user.email">
+      <i class="icon ion-email-unread" ></i>
+     {{amiShow.user.email}}
+    </a>
+
+     
+               
+   <label class="item item-icon-left" ng-show="amiShow.user.country.name_fr"><i class="icon ion-location"></i>{{labels.pays}} :
+  {{amiShow.user.country.name_fr}}</label> 
+    
+    <label class="item item-icon-left" ng-show="ami.useramis.province.title"><i class="icon ion-android-bus"></i>{{labels.province}} :
+    {{ami.useramis.province.title}}</label>
+    
+     <label class="item item-icon-left" ng-show="amiShow.user.localite.title"><i class="icon ion-email"></i> {{labels.code_postal}} :
+ {{amiShow.user.localite.title}} ({{ami.useramis.localite.code}})</label> 
+  
+          <label class="item item-icon-left" ng-show="amiShow.user.adresse"><i class="icon ion-email"></i> {{labels.adresse}} :
+   {{amiShow.user.adresse}}</label> 
+    
+    <label class="item item-icon-left" ><i class="icon ion-person-stalker"></i> {{labels.artisans}} :
+   {{amiShow.user.artisan_count}}</label> 
+  
+   
+    
+    
+    
+    
+     
+</div>    
+    </ion-content>
+           
+</ion-view>

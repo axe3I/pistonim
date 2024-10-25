@@ -1,0 +1,12 @@
+<ion-view title="{{labels.mes_contacts}}" id="page2" cache-view="false">
+    <ion-content padding="true" class="has-header">
+        <ion-list ng-repeat="user in searchUsers">
+            <div class="item item-input-inset no-padding">
+                <button type="button" class="button button-full no-padding"  ng-click="add_ami(user);">{{user.nom}} {{user.prenom}}</button>
+            </div>
+        </ion-list>
+        <div class="card" ng-show="searchUsers.length === 0">
+            <div class="item item-text-wrap text-shadow text-weight-bold">{{labels.aucun_utilisateur}}</div>
+        </div>
+    </ion-content>
+</ion-view>

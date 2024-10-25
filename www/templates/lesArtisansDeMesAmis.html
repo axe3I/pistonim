@@ -1,0 +1,25 @@
+<ion-view title="{{lesArtisansDeMesAmisTitle}}" id="page17" cache-view="false">
+    <ion-content padding="true" class="has-header" >
+<div class="item" ><b>{{labels.artisansAffiches}}  : {{liste.length}}</b></div>
+        
+        <ion-list ng-repeat="artisan in liste = (artisans | filter:{activite_id:act,specialite_id:spe}) | orderBy: ['+activite.title','-tel.artisan_count']" ng-show="artisans.length != 0">
+            <div class="item item-input-inset no-padding">
+
+
+                <button class="button button-full no-padding"  ng-click="afficherArtisan(artisan);">
+                    <span ng-show="!artisan.societe">{{artisan.nom}} {{artisan.prenom}}</span> 
+                    <span ng-show="artisan.societe">{{artisan.societe}}</span> <br>
+                    {{artisan.activite.title}}({{artisan.tel.artisan_count}})</button>
+               
+
+                <button class="button button-icon button-clear ion-plus-circled no-padding" ng-click="submitArtisan(artisan);"></button>
+
+            </div>
+        </ion-list>
+
+       
+
+    </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,30 @@
+<ion-view title="{{labels.login}}" id="page3" cache-view="false">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form id="frmSignIn" class="list" name="frmSignIn" ng-submit="hideKeyboard();" novalidate ng-show="!validateSignup">
+            <div style="text-align:center;">
+                <img src="img/logo-grand.png" width="50%" height="auto">
+            </div>
+            <label class="item item-input" ng-class="{'has-error': frmSignIn.email.$invalid && frmSignIn.email.$dirty}">
+                <input type="email" name="email" placeholder="{{labels.email}}" ng-model="user.email" ng-required="true" ng-init="init_email();">
+            </label>
+            <label class="item item-input" ng-class="{'has-error': frmSignIn.password.$invalid && frmSignIn.password.$dirty}">
+                <input type="password" name="password" placeholder="{{labels.password}}" ng-model="user.password" ng-required="true">
+            </label>
+            <ion-toggle ng-model="user.rember" toggle-class="toggle-energized">{{labels.rester_connecte}}</ion-toggle>
+            <a ui-sref="auth.motDePasseOubli" id="sAuthentifier-button1" class="button button-small button-clear item-right">{{labels.forgotten_password}}</a>
+            <button type="submit" ng-show="false">sumit</button>
+            <button type="button" id="sAuthentifier-button5" ng-click="login();" class="button button-energized  button-block icon-left ion-log-in" ng-disabled="frmSignIn.$invalid">{{labels.connection}}</button>
+        </form>
+		
+        <form class="list" name="frmValidate" ng-submit="hideKeyboard();" novalidate ng-show="validateSignup">
+            <div style="text-align:center;">
+                <img src="img/logo-grand.png" width="50%" height="auto">
+            </div>
+            <label class="item item-input" ng-class="{'has-error': frmValidate.code.$invalid && frmValidate.code.$dirty}">
+                <input type="text" placeholder="{{labels.code_activation}} *" minlength="6" maxlength="6" class="form-control" ng-model="user.code" name="code" id="code" required>
+            </label>
+            <button type="submit" ng-show="false">submit</button>
+            <button type="button" id="sInscrire-button3" ng-click="validateCode();" ng-disabled="frmValidate.$invalid" class="button button-energized  button-block icon-left ion-email">{{labels.envoyer}}</button>
+        </form>
+    </ion-content>
+</ion-view>

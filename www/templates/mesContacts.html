@@ -1,0 +1,17 @@
+<ion-view title="{{labels.mes_contacts}}" id="page2" cache-view="false">
+    <ion-content padding="true" class="has-header">
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Rechercher" ng-model="search">
+        </label>
+        <ion-list ng-init="getAllContacts();">
+            <div ng-repeat="contact in mesContacts | filter:search | orderBy : '+displayName'" ng-show="contact.phoneNumbers"  >
+                <div class="item item-divider" ng-if="contact.displayName"><i class="icon ion-android-contact"></i> {{contact.displayName}}</div>
+                <div class="item item-divider" ng-if="contact.name"><i class="icon ion-android-contact"></i> {{contact.name.formatted}}</div>
+                <div class="item" ng-repeat="phone in contact.phoneNumbers" ng-click="ajoutArtisan(contact,phone.value);">
+                <i class="icon ion-android-call"></i> {{phone.value}}
+                </div>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

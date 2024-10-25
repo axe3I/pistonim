@@ -1,0 +1,44 @@
+<ion-view title="{{mesartisanstitle}}" id="page2" cache-view="false">
+    <ion-content padding="true" class="has-header">
+
+<!--
+  <div class="item item-input-inset">
+      <label class="item item-input-wrapper">
+          <i class="icon ion-ios-search placeholder-icon"></i>
+          <input type="search" name="rech" id="rech" ng-model="activite.title" placeholder="{{labels.rechercher}}">
+    </label>
+   </div>
+        
+ -->   
+        
+        
+        <div class="item" ><b>{{labels.artisansAffiches}} : {{liste.length}}</b></div>
+        
+        <ion-list ng-repeat="artisan in liste = (artisans | filter:{activite_id:act,specialite_id:spe}) | orderBy: ['+activite.title','-tel.artisan_count']" ng-show="artisans.length != 0">
+
+            <div class="item item-input-inset no-padding">
+
+
+                <button class="button button-full no-padding"  ng-click="afficherArtisan(artisan);">
+                    <span ng-show="!artisan.societe">{{artisan.nom}} {{artisan.prenom}}</span> 
+                    <span ng-show="artisan.societe">{{artisan.societe}}</span> <br> 
+                    {{artisan.activite.title}}
+                    ({{artisan.tel.artisan_count}})
+                </button>
+
+                <button class="button button-icon button-clear ion-edit no-padding" ng-click="modifierArtisan(artisan);"></button>
+
+                <button class="button button-icon button-clear ion-trash-a no-padding" ng-click="supprimer(artisan);"></button>
+
+            </div>
+            
+        </ion-list>
+
+        <div class="card" ng-show="artisans.length === 0">
+            <div class="item item-text-wrap">{{labels.aucun_artisan}}</div>
+        </div>   
+
+
+
+    </ion-content>
+</ion-view>

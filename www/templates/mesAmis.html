@@ -1,0 +1,17 @@
+<ion-view title="{{labels.mes_amis}} ({{amis_count}})" id="page2" cache-view="false">
+    
+    <ion-content padding="true" class="has-header" >
+         <div class="card" ng-show="amis.length ===0">
+                                    <div class="item item-text-wrap">{{labels.aucun_utilisateur}}</div>
+                                </div>  
+        <ion-list ng-repeat="ami in amis" ng-show="amis.length!=0">
+            <div class="item item-input-inset no-padding">
+            <button class="button button-full"  ng-click="afficherAmi(ami);">{{ami.useramis.title}}</button>
+             <button class="button button-icon button-clear ion-trash-a no-padding" ng-click="supprimer(ami);"></button>
+            </div>
+        </ion-list>
+    </ion-content>
+    <ion-content padding="true" class="has-header" ng-show="amis.length==0">
+        {{labels.aucun_utilisateur}}
+    </ion-content>
+</ion-view>

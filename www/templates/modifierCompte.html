@@ -1,0 +1,93 @@
+<ion-view title="{{labels.modifier}}" id="page17" cache-view="false">
+    <ion-content overflow-scroll="true" padding="true"  class="has-header">
+
+
+
+        <form class="list" name="addArtisan" ng-submit="hideKeyboard();" novalidate ng-submit="submitArtisan();"  >
+
+            <div class=list>
+                <label class="item item-input" ng-class="{'has-error': addArtisan.nom.$invalid && addArtisan.nom.$dirty}">
+                    <input type="text" name="nom" id="nom" placeholder="{{labels.nom}} *" maxlength="100" ng-model="userUp.nom" required >
+                </label>
+
+                <label class="item item-input" ng-class="{'has-error': addArtisan.prenom.$invalid && addArtisan.prenom.$dirty}">
+                    <input type="text" name="prenom" id="prenom" placeholder="{{labels.prenom}} *" maxlength="100" ng-model="userUp.prenom" required >
+                </label>   
+                <div class="item row">
+                    <div class="col-70">
+                        <label class="item-input" ng-class="{'has-error': addArtisan.email.$invalid && addArtisan.email.$dirty}">
+                            <input type="email" name="email" id="email" placeholder="{{labels.email}}" ng-model="userUp.email"  >
+                        </label>
+                    </div>
+                    <div class="col-30">
+                        {{labels.visible}}
+                        <label class="toggle toggle-energized" >
+                            <input type="checkbox" ng-model="userUp.emailshow">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <label class="item item-input" ng-class="{'has-error': addArtisan.nom.$invalid && addArtisan.nom.$dirty}">
+                    <input type="password" name="password" id="password" placeholder="{{labels.password}} *" maxlength="100" ng-model="userUp.password" pattern=".{6,}" >
+                </label>
+
+                <label class="item item-input item-select" class="form-control" convert-to-number  >
+                    <div class = "input-label" >
+                        {{labels.pays}} : 
+                    </div>
+                    <select id="countrie_id" name="countrie_id" ng-model="userUp.countrie_id" ng-change="pays_change();" class="form-control" convert-to-number  required>
+                        <option ng-repeat="countrie in countries" value="{{countrie.id}}">{{countrie.name_fr}}</option>
+                    </select>
+                </label>
+
+                <input type="text" ng-model="userUp.province_id"  name="province_id" id="province_id" ng-show="false" required>
+
+                <label class="item item-input" ng-class="{'has-error': addArtisan.localite_id.$invalid && addArtisan.localite_id.$dirty}">
+                    <input cancel-label="X"  select-items-label="Sélectionner un élément" selected-items-label="Choisi :" ion-autocomplete placeholder="{{labels.code_postal}} *" item-value-key="id" item-view-value-key="title" max-selected-items="1" type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off" ng-model="userUp.localite.title" items-method="callbackMethod(query)" items-clicked-method="clickedMethod(callback)"  required/>
+
+                </label>
+
+                <input type="text" ng-model="userUp.localite_id"  name="localite_id" id="localite_id" ng-show="false" required >
+
+                <label class="item item-input" ng-class="{'has-error': addArtisan.adresse.$invalid && addArtisan.adresse.$dirty}">
+                    <textArea name="adresse" id="adresse" placeholder="{{labels.adresse}}" maxlength="100" ng-model="userUp.adresse" ></textArea>
+            </label>
+
+     
+<div class="item row">          
+    <div class="col-70">
+<label class="item-input" ng-class="{'has-error': addArtisan.telephone.$invalid && addArtisan.telephone.$dirty}">
+         
+                <input type="tel" name="telephone" id="telephone" placeholder="{{labels.telephone}} *" ng-model="userUp.telephone" pattern="[0-9+]{8,15}" required  value="addArtisan.$invalid">
+            </label>
+    </div>
+    <div class="col-30">
+        {{labels.visible}}
+        <label class="toggle toggle-energized">
+     <input type="checkbox" ng-model="userUp.telephoneshow" name="telephoneshow" id="telephoneshow">
+     <div class="track">
+         <div class="handle"></div>
+     </div>
+ </label>
+    </div>
+    </div>
+       <button type="submit" ng-show="false">submit</button>
+      <button type="submit" id="sInscrire-button3"    class="button button-energized  button-block icon-left ion-edit"  ng-click="save();" ng-disabled="addArtisan.$invalid">{{labels.enregistrer}}</button>
+    
+         </div>
+
+     
+ 
+       </form> 
+     
+     
+  
+        
+        
+        
+    </ion-content>
+	
+</ion-view>

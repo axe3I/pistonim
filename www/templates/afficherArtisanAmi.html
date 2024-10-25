@@ -1,0 +1,81 @@
+<ion-view title="{{labels.artisans_mes_amis}}" cache-view="false" id="page18">
+<ion-nav-buttons side="right" ng-hide="auth" cash-view="false">
+                       <button class="button button-icon button-clear ion-plus-circled no-padding" ng-click="submitArtisan();"></button> 
+                        
+                    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+      
+<div class="list card">           
+  <label class="item item-icon-left">
+      <i class="icon ion-person"></i>
+      {{artisanShow.nom}} {{artisanShow.prenom}}
+    </label>
+
+    <a href="tel:{{artisanShow.telephone}}" class="item item-icon-left">
+    <i class="icon ion-ios-telephone"></i>
+     
+      {{artisanShow.telephone}}
+    </a> 
+     
+        <a href="mailto:{{artisanShow.email}}" class="item item-icon-left" ng-show="artisanShow.email">
+    
+    <i class="icon ion-email-unread"></i>
+    
+      {{artisanShow.email}}
+  </a>
+        
+   <label class="item item-icon-left"><i class="icon ion-ios-briefcase"></i>{{labels.activite}} :
+  {{artisanShow.activite.title}}</label> 
+   <label class="item item-icon-left"><i class="icon ion-ios-briefcase"></i> {{labels.specialite}} :
+  {{artisanShow.specialite.title}}</label> 
+    <label class="item item-icon-left"><i class="icon ion-ios-briefcase"></i>{{labels.societe}} :
+{{artisanShow.societe}}</label>         
+   <label class="item item-icon-left" ng-show="artisanShow.numero_tva"><i class="icon ion-social-usd"></i> {{labels.num_tva}} :
+  {{artisanShow.numero_tva}}</label>   
+<label class="item item-icon-left" ng-show="artisanShow.resume_specialite"><i class="icon ion-ios-paper-outline"></i>{{labels.resume_specialite}} :
+  {{artisanShow.resume_specialite}}</label> 
+            <label class="item item-icon-left"><i class="icon ion-location"></i>{{labels.pays}} :
+{{artisanShow.country.name_fr}}</label>
+            <label class="item item-icon-left"><i class="icon ion-android-bus"></i>{{labels.province}} :
+   {{artisanShow.province.title}}</label> 
+             <label class="item item-icon-left"><i class="icon ion-email"></i> {{labels.code_postal}} :
+ {{artisanShow.localite.title}} ({{artisanShow.localite.code}})</label> 
+            
+        <label class="item item-icon-left" ng-show="artisanShow.adresse"><i class="icon ion-email"></i> {{labels.adresse}} :
+   {{artisanShow.adresse}}</label> 
+             <a href="tel:{{artisanShow.telephone_fix}}" class="item item-icon-left" ng-show="artisanShow.telephone_fix"><i class="icon ion-ios-telephone"></i>   {{artisanShow.telephone_fix}}</a>
+    
+            <label class="item range" ><i class="icon ion-social-usd"></i>{{labels.tarif}} :
+   <input type="range" name="tarif" id="tarif" ng-model="artisanShow.ratingtarif" max=10 min=0  ng-disabled="true">{{artisanShow.ratingtarif}}</label>
+    <label class="item range" ><i class="icon ion-ios-list-outline"></i>{{labels.planning}} :
+   <input type="range" name="planning" id="planning" ng-model="artisanShow.ratingplanning" max=10 min=0 ng-disabled="true">{{artisanShow.ratingplanning}}</label>
+            <label class="item range" ><i class="icon ion-android-bar"></i>{{labels.qualite}} :
+   <input type="range" name="qualite" id="qualite" ng-model="artisanShow.ratingqualite" max=10 min=0  ng-disabled="true">{{artisanShow.ratingqualite}}</label>
+        
+ <label class="item item-icon-left"><i class="icon ion-android-contacts"></i>{{labels.mes_amis}} ({{liste_amis.length}}):
+                <ul class="simple-post-list" ng-show="liste_amis.length !== 0">
+                    <li ng-repeat="user in liste_amis">
+                       
+                       
+                            <!--<button class="button button-full no-padding" ng-click="afficherAmi(user);">--> {{user.title}}<!--</button>-->
+                            
+                                ({{user.artisan_count}} {{labels.artisans}})
+                                
+                            
+                        
+                            
+                    </li>
+
+                </ul>
+     
+                <div ng-show="liste_amis.length === 0">
+                    <span class=" text-shadow text-weight-bold">{{labels.aucun_utlisateur}}</span>
+                </div>
+            </label>
+    
+        
+</div> 
+       
+    </ion-content>
+           
+</ion-view>

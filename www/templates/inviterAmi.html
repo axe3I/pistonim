@@ -1,0 +1,35 @@
+<ion-view title="{{labels.inviter_ami_email}}" cache-view="false" id="page25">
+    <ion-content>
+        <div class="list card">
+
+            <form id="inviterAmi" name="inviterAmi" class="form-horizontal mb-lg" ng-submit="Inviter();">
+
+
+
+                <label class="item item-input" ng-class="{'has-error': inviterAmi.email.$invalid && inviterAmi.email.$dirty}">
+                    <input type="email" placeholder="{{labels.email}}" maxlength="150" class="form-control" ng-model="amiInviter.email" name="email" id="email" required>
+                </label>
+
+
+
+                <button type="submit" class="button button-energized  button-block icon-left ion-plus-circled" ng-disabled="inviterAmi.$invalid">{{labels.inviter}}</button>
+
+            </form>
+            
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Rechercher un email à inviter" ng-model="search">
+            </label>
+            <ion-list ng-repeat="email in emails | filter:search | orderBy:'nom'">
+                <div class="item item-input-inset no-padding">
+                    <button type="button" class="button button-full no-padding"  ng-click="Inviter(email.mail);">{{email.nom}}<br ng-if="email.nom">{{email.mail}}</button>
+                </div>
+            </ion-list>
+            <div class="card" ng-show="emails.length == 0">
+                <div class="item item-text-wrap text-shadow text-weight-bold">{{labels.aucun_utilisateur}}</div>
+            </div>
+
+        </div>   
+
+    </ion-content>
+</ion-view>
