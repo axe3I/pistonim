@@ -1,0 +1,47 @@
+{
+  "categorization": {
+    "type": "APPLICATION",
+    "category": "Social"
+  },
+  "description": {
+    "texts": {
+      "title": "Pistonim",
+      "features": [
+        "contacts",
+        "artisans",
+        "friends"
+      ],
+      "short-description": "A place where you can find craftsmen in your Area",
+      "full-description": "The principle is simple, each maintains its own address book with artisans, professionals preferred. Then getting in touch with a friend, the address book are visible and allow everyone to be able to contact the author of his friend.",
+      "keywords": "contacts,artisans,friends",
+      "recent-changes": "",
+      "privacy-policy": "",
+      "eula": ""
+    },
+    "images": {
+      "screenshots": [
+        "package-assets/publish/Screenshot-1-480-800.png",
+        "package-assets/publish/Screenshot-2-480-800.png",
+        "package-assets/publish/Screenshot-3-480-800.png"
+      ],
+      "app-icon-small": "package-assets/publish/114X114.png",
+      "app-icon": "package-assets/publish/512x512.png",
+      "small-promo": "",
+      "large-promo": ""
+    },
+    "videos": {
+      "video-url": ""
+    }
+  },
+  "packages": {
+    "apk-file": "/D/Work/pistonim/pistonim 2016-10-24.apk",
+    "zip-xdk-compliant": false,
+    "zip-file": "",
+    "secondary-apk-file": ""
+  },
+  "support": {
+    "email": "mouadh@tic-nova.com",
+    "website": "http://www.pistonim.com/"
+  },
+  "testing-instructions": ""
+}
